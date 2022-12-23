@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+h1{
+    color: #ffffff;
+}
