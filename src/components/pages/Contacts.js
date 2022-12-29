@@ -1,0 +1,32 @@
+import PhonebookForm from 'components/PhonebookForm/PhonebookForm';
+import { Filter } from 'components/Filter/Filter';
+import { PhonebookList } from 'components/PhonebookList/PhonebookList';
+import style from 'components/App.module.css';
+import { useGetContactsQuery } from 'redux/contacts';
+import Loader from 'components/Loader/Loader';
+
+const Contacts = () => {
+  const { data: isLoggedIn, isLoading, isError, error } = useGetContactsQuery();
+
+  let content;
+
+  if (isLoading) {
+    content = <Loader />;
+  } else if (isLoggedIn) {
+    content = (
+      <div className={style.container}>
+        <h1>Phonebook</h1>
+        <div className={style.wrapper}>
+          <PhonebookForm />
+          <Filter />
+        </div>
+        <PhonebookList />
+      </div>
+    );
+  } else if (isError) {
+    content = <p>{JSON.stringify(error)}</p>;
+  }
+  return content;
+};
+
+export default Contacts;
